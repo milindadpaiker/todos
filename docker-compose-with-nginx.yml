@@ -1,0 +1,35 @@
+# docker-compose.yml
+
+version: "3.9"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports: 
+      - '5432:5432'
+    volumes:
+      - todo-db:/var/lib/postgresql/data
+
+  todo-server:
+    build:
+      context: .
+      dockerfile: docker/node.Dockerfile
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: admin
+      DB_HOST: db
+    depends_on:
+      - db
+
+  nginx:
+    build: 
+      context: .
+      dockerfile: docker/nginx.Dockerfile
+    ports:
+     - "8000:80"
+
+volumes:
+  todo-db:      
