@@ -29,10 +29,10 @@ You can rename the current file by clicking the file name in the navigation bar 
 
 ## docker push
 
-*docker login --username=yourhubusername --email=youremail@company.com
-docker tag 1babb1dde7e1 milindadpaiker/mil-redis
-docker push milindadpaiker/mil-redis
-docker pull milindadpaiker/mil-redis*
+	*docker login --username=yourhubusername --email=youremail@company.com
+	docker tag 1babb1dde7e1 milindadpaiker/mil-redis
+	docker push milindadpaiker/mil-redis
+	docker pull milindadpaiker/mil-redis*
 
 ## docker-compose
 
