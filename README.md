@@ -6,7 +6,21 @@ How to run the project
 # docker-build
 
 //Always run from parent dir (/d/projects/personal/todos)
-*$ docker build -t mm-server -f docker/node.Dockerfile . --no-cache*
+*docker build -t milindadpaiker/todo-app -f docker/node.Dockerfile . --no-cache
+//login to dockerhub and push above image - default tag latest
+docker login --username=yourhubusername
+docker push milindadpaiker/todo-app
+
+//if you want to push with a different tag, create the tag from source image first - using image id/name
+docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+docker tag 1babb1dde7e1 milindadpaiker/mil-redis
+    OR
+    
+docker tag milindadpaiker/todo-app milindadpaiker/todo-app:manual
+docker push milindadpaiker/todo-app:manual
+
+//Pull image from dockerhub
+docker pull milindadpaiker/mil-redis*
 
 ## docker-run
 
@@ -23,16 +37,7 @@ How to run the project
 *docker stop container
 docker rm container.*
 
-## Rename a file
 
-You can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.
-
-## docker push
-
-	*docker login --username=yourhubusername --email=youremail@company.com
-	docker tag 1babb1dde7e1 milindadpaiker/mil-redis
-	docker push milindadpaiker/mil-redis
-	docker pull milindadpaiker/mil-redis*
 
 ## docker-compose
 
