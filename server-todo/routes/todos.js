@@ -45,4 +45,17 @@ router.delete('/', (req, res) => {
     )
 })
 
-module.exports = router;
+
+router.get('/hello', (req, res) => {
+    res.json({msg : "hello"});
+})
+
+//sample function to show unit testing
+function add(a, b) {
+    return a + b;
+}
+
+module.exports = {
+    router: router,
+    add: add,
+} 

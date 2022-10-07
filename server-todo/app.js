@@ -14,7 +14,7 @@ app.use(express.static('public'))
 app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/todos', todosRoutes);
+app.use('/todos', todosRoutes.router);
 
 
 app.listen(8000)
