@@ -1,0 +1,106 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger Petstore"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "mytodo.io"
+schemes:
+- "http"
+paths:
+  /todos:
+    post:
+      tags:
+      - "todo"
+      summary: "Add a todo"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Todo"
+      responses:
+        "405":
+          description: "Invalid input"
+    delete:
+      tags:
+      - "todo"
+      summary: "Deletes a todo"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "todo"
+        in: "query"
+        description: "todo to be deleted"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Pet not found"
+    get:
+      tags:
+      - "todo"
+      summary: "Get all my todos"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Todos"
+        "400":
+          description: "Invalid status value"        
+
+definitions:
+  Todo:
+    type: "object"
+    properties:
+      todo:
+        type: "string"
+      status:
+        type: "string"
+  Todos:
+    type: "object"
+    required:
+    - "name"
+    - "photoUrls"
+    properties:
+      status:
+        type: "string"
+        description: "status"
+        enum:
+        - "success"
+        - "failure"
+        - "partial-success"        
+      data:
+        type: "array"
+        xml:
+          name: "tag"
+          wrapped: true
+        items:
+          $ref: "#/definitions/Todo"
+
+    xml:
+      name: "Pet"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
