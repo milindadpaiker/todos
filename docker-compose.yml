@@ -13,6 +13,7 @@ services:
       - todo-db:/var/lib/postgresql/data
 
   todo-server:
+    #image: milindadpaiker/todo-app
     build:
       context: .
       dockerfile: docker/node.Dockerfile
