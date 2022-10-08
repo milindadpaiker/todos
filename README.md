@@ -60,7 +60,7 @@ change to the parent directory todos and run below commands
 
 
 
-# SB schema
+# 4. Create database schema
 //Irrespective of whether you do 1/2/3. Make sure DB schema is created bfore app runs
 // Run this in DB container (open from docker desktop)
 
